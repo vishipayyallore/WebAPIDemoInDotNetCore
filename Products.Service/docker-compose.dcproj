@@ -5,7 +5,7 @@
     <DockerTargetOS>Windows</DockerTargetOS>
     <ProjectGuid>0b4623f9-37cb-4f4e-8b72-c8c453d279db</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
-    <DockerServiceUrl>http://{ServiceIPAddress}/api/values</DockerServiceUrl>
+    <DockerServiceUrl>http://{ServiceIPAddress}/api/products</DockerServiceUrl>
     <DockerServiceName>products.service</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
