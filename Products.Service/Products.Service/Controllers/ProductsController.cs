@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products.Service.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Products.Service.Controllers
 {
@@ -15,11 +16,21 @@ namespace Products.Service.Controllers
             new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
         };
 
+        [HttpGet]
         public IEnumerable<Product> GetAllProducts()
         {
             return _products;
         }
 
-
+        [HttpGet("{id}", Name = "GetProduct")]
+        public IActionResult GetProduct(int id)
+        {
+            var product = _products.FirstOrDefault( (p) => p.Id == id );
+            if( product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
     }
 }
