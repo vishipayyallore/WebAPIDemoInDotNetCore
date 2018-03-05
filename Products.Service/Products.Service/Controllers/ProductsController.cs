@@ -26,7 +26,7 @@ namespace Products.Service.Controllers
         public IActionResult GetProduct(int id)
         {
             var product = _products.FirstOrDefault( (p) => p.Id == id );
-            if( product == null)
+            if (product == null)
             {
                 return NotFound();
             }
