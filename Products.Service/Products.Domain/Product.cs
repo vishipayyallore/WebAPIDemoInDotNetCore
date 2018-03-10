@@ -1,4 +1,4 @@
-﻿namespace Products.Data
+﻿namespace Products.Domain
 {
     public class Product
     {

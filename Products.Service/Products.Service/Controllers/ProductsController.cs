@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Products.Service.Models;
+using Products.Domain;
 using System.Collections.Generic;
 using System.Linq;
 
