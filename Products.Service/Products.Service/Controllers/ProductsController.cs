@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products.Domain;
+using Products.Data;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace Products.Service.Controllers
     [Route("api/Products")]
     public class ProductsController : Controller
     {
+        private readonly ProductsContext _productsContext;
         readonly IEnumerable<Product> _products = new Product[]
         {
             new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },

@@ -3,7 +3,7 @@ using Products.Domain;
 
 namespace Products.Data
 {
-    class ProductsContext : DbContext
+    public class ProductsContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
 
