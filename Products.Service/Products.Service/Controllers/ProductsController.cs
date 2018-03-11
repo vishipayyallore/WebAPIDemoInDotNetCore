@@ -18,10 +18,16 @@ namespace Products.Service.Controllers
             new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
         };
 
+        public ProductsController()
+        {
+            _productsContext = new ProductsContext();
+            _productsContext.Products.AddRange(_products);
+        }
+
         [HttpGet]
         public IEnumerable<Product> GetAllProducts()
         {
-            return _products;
+            return _productsContext.Products.ToList();
         }
 
         [HttpGet("{id}", Name = "GetProduct")]
