@@ -33,11 +33,10 @@ namespace Products.Service.Controllers
             return await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList());
         }
 
-        [HttpGet("{id}", Name = "GetProduct")]
-        [Route("GetProduct")]
-        public IActionResult GetProduct(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProduct(int id)
         {
-            var product = _products.FirstOrDefault( (p) => p.Id == id );
+            var product = await Task.FromResult(_productsContext.Products.FirstOrDefault( (p) => p.Id == id ));
             if (product == null)
             {
                 return NotFound();
