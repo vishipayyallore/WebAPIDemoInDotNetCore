@@ -11,7 +11,7 @@ namespace Products.Service.Controllers
     public class ProductsController : Controller
     {
         private readonly ProductsContext _productsContext;
-        readonly IEnumerable<Product> _products = new Product[]
+        readonly IEnumerable<Product> _products = new[]
         {
             new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
             new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
