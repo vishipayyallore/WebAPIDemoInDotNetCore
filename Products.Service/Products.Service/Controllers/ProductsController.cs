@@ -21,7 +21,9 @@ namespace Products.Service.Controllers
         public ProductsController()
         {
             _productsContext = new ProductsContext();
+            _productsContext.Products.Add(new Product {Id = 4, Name = "Hammer", Category = "Hardware", Price = 16.99M});
             _productsContext.Products.AddRange(_products);
+            _productsContext.SaveChanges();
         }
 
         [HttpGet]
