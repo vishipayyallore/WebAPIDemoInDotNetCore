@@ -22,7 +22,13 @@ namespace Products.Service
 
             services.AddSwaggerGen(config =>
             {
-                config.SwaggerDoc("v1", new Info { Title = "Products Service", Version = "v1" });
+                config.SwaggerDoc("v1", new Info
+                {
+                    Title = "Products Service",
+                    Version = "v1",
+                    Description = "Web API for Products",
+                    TermsOfService = "None"
+                });
             });
         }
 
