@@ -10,6 +10,7 @@ namespace Products.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseInMemoryDatabase();
+            // UseInMemoryDatabase();
         }
     }
 }
