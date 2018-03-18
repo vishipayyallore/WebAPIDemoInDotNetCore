@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Products.Domain;
 using Products.Data;
+using Products.Domain;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace Products.Service.Controllers
     public class ProductsController : Controller
     {
         private readonly ProductsContext _productsContext = new ProductsContext();
-        readonly IEnumerable<Product> _products = new[]
+        private readonly IEnumerable<Product> _products = new[]
         {
             new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
             new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
