@@ -5,12 +5,12 @@ namespace Products.Data
 {
     public class ProductsContext : DbContext
     {
+
         public DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase();
-            // UseInMemoryDatabase();
+            optionsBuilder.UseInMemoryDatabase("Products");
         }
     }
 }

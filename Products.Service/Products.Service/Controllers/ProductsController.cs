@@ -11,7 +11,7 @@ namespace Products.Service.Controllers
     [Route("api/[Controller]")]
     public class ProductsController : Controller
     {
-        private readonly ProductsContext _productsContext = new ProductsContext();
+        private readonly ProductsContext _productsContext;
         private readonly IEnumerable<Product> _products = new[]
         {
             new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
@@ -19,8 +19,9 @@ namespace Products.Service.Controllers
             new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
         };
 
-        public ProductsController()
+        public ProductsController(ProductsContext productsContext)
         {
+            _productsContext = productsContext;
             if (_productsContext.Products.Count() != 0) return;
             _productsContext.Products.AddRange(_products);
             _productsContext.Products.Add(new Product { Id = 4, Name = "Hammer", Category = "Hardware", Price = 16.99M });
