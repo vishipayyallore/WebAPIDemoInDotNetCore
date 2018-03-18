@@ -22,8 +22,8 @@ namespace Products.Service.Controllers
         public ProductsController()
         {
             if (_productsContext.Products.Count() != 0) return;
-            _productsContext.Products.Add(new Product { Id = 4, Name = "Hammer", Category = "Hardware", Price = 16.99M });
             _productsContext.Products.AddRange(_products);
+            _productsContext.Products.Add(new Product { Id = 4, Name = "Hammer", Category = "Hardware", Price = 16.99M });
             _productsContext.SaveChanges();
         }
 
