@@ -19,6 +19,7 @@ namespace Products.Service.Controllers
             new Product {  Name = "Yo-yo", Category = "Toys", Price = 3.75M },
             new Product {  Name = "Hammer", Category = "Hardware", Price = 16.99M }
         };
+        private readonly ToDoContext _toDoContext;
 
         public ProductsController(ProductsContext productsContext)
         {
