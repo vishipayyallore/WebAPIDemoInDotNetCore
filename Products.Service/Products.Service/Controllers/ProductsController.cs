@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products.Data;
 using Products.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace Products.Service.Controllers
         private readonly ProductsContext _productsContext;
         private readonly IEnumerable<Product> _products = new[]
         {
-            new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
-            new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
-            new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
+            new Product {  Name = "Tomato Soup", Category = "Groceries", Price = 1 },
+            new Product {  Name = "Yo-yo", Category = "Toys", Price = 3.75M },
+            new Product {  Name = "Hammer", Category = "Hardware", Price = 16.99M }
         };
 
         public ProductsController(ProductsContext productsContext)
@@ -24,7 +25,7 @@ namespace Products.Service.Controllers
             _productsContext = productsContext;
             if (_productsContext.Products.Count() != 0) return;
             _productsContext.Products.AddRange(_products);
-            _productsContext.Products.Add(new Product { Id = 4, Name = "Hammer", Category = "Hardware", Price = 16.99M });
+            _productsContext.Products.Add(new Product { Name = "Hammer", Category = "Hardware", Price = 16.99M });
             _productsContext.SaveChanges();
         }
 
@@ -35,9 +36,9 @@ namespace Products.Service.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProduct(int id)
+        public async Task<IActionResult> GetProduct(Guid id)
         {
-            var product = await Task.FromResult(_productsContext.Products.FirstOrDefault( (p) => p.Id == id ));
+            var product = await Task.FromResult(_productsContext.Products.FirstOrDefault((p) => p.Id == id));
             if (product == null)
             {
                 return NotFound();
