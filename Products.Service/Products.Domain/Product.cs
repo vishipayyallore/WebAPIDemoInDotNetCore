@@ -1,10 +1,12 @@
-﻿namespace Products.Domain
+﻿using System;
+
+namespace Products.Domain
 {
     public class Product
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string Category { get; set; }
-        public decimal Price { get; set; }
+        public decimal Price { get; set; } = 10.00M;
     }
 }
