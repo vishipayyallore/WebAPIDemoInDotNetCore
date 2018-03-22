@@ -20,14 +20,26 @@ namespace Products.Service.Controllers
             new Product {  Name = "Hammer", Category = "Hardware", Price = 16.99M }
         };
         private readonly ToDoContext _toDoContext;
+        private readonly IEnumerable<TodoItem> _todoItems = new[]
+        {
+            new TodoItem { Name = "Read Articles"},
+            new TodoItem { Name = "Watch MSDN Videos"}
+        };
 
-        public ProductsController(ProductsContext productsContext)
+
+        public ProductsController(ProductsContext productsContext, ToDoContext toDoContext)
         {
             _productsContext = productsContext;
             if (_productsContext.Products.Count() != 0) return;
             _productsContext.Products.AddRange(_products);
             _productsContext.Products.Add(new Product { Name = "Hammer", Category = "Hardware", Price = 16.99M });
             _productsContext.SaveChanges();
+
+            _toDoContext = toDoContext;
+            if (_toDoContext.ToDoItems.Count() != 0) return;
+            _toDoContext.ToDoItems.AddRange(_todoItems);
+            _toDoContext.ToDoItems.Add(new TodoItem { Name = "Practice Programs" });
+            _toDoContext.SaveChanges();
         }
 
         [HttpGet]
@@ -46,5 +58,12 @@ namespace Products.Service.Controllers
             }
             return Ok(product);
         }
+
+        [HttpGet("ToDoItems")]
+        public async Task<IEnumerable<TodoItem>> GetAllToDoItems()
+        {
+            return await Task.FromResult<IEnumerable<TodoItem>>(_toDoContext.ToDoItems.ToList());
+        }
+
     }
 }

@@ -6,7 +6,7 @@ namespace Products.Data
     public class ToDoContext : DbContext
     {
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<TodoItem> ToDoItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
