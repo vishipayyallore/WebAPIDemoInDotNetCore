@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Products.Service.Controllers
 {
@@ -64,9 +65,11 @@ namespace Products.Service.Controllers
         }
 
         [HttpGet("ToDoItems")]
-        public async Task<IEnumerable<TodoItem>> GetAllToDoItems()
+        public async Task<IActionResult> GetAllToDoItems()
         {
-            return await Task.FromResult<IEnumerable<TodoItem>>(_toDoContext.ToDoItems.ToList());
+            var toDo = await Task.FromResult<IEnumerable<TodoItem>>(_toDoContext.ToDoItems.ToList());
+            var products = await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList());
+            return Ok(new { Products = products, ToDoItems = toDo });
         }
 
     }
