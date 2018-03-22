@@ -30,7 +30,7 @@ namespace Products.Service.Controllers
         public ProductsController(ProductsContext productsContext, ToDoContext toDoContext)
         {
             _productsContext = productsContext;
-            if (_productsContext.Products.Count() == 0)
+            if (!_productsContext.Products.Any())
             {
                 _productsContext.Products.AddRange(_products);
                 _productsContext.Products.Add(new Product { Name = "Hammer", Category = "Hardware", Price = 16.99M });
@@ -38,7 +38,7 @@ namespace Products.Service.Controllers
             }
 
             _toDoContext = toDoContext;
-            if (_toDoContext.ToDoItems.Count() == 0)
+            if (!_toDoContext.ToDoItems.Any())
             {
                 _toDoContext.ToDoItems.AddRange(_todoItems);
                 _toDoContext.ToDoItems.Add(new TodoItem { Name = "Practice Programs" });
