@@ -10,6 +10,9 @@ namespace Products.Service.Controllers
 {
     [Produces("application/json")]
     [Route("api/[Controller]")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
+    // http://localhost:6059/api/Products?api-version=1.0
     public class ProductsController : Controller
     {
         private readonly ProductsContext _productsContext;
@@ -38,12 +41,10 @@ namespace Products.Service.Controllers
             }
 
             _toDoContext = toDoContext;
-            if (!_toDoContext.ToDoItems.Any())
-            {
-                _toDoContext.ToDoItems.AddRange(_todoItems);
-                _toDoContext.ToDoItems.Add(new TodoItem { Name = "Practice Programs" });
-                _toDoContext.SaveChanges();
-            }
+            if (_toDoContext.ToDoItems.Any()) return;
+            _toDoContext.ToDoItems.AddRange(_todoItems);
+            _toDoContext.ToDoItems.Add(new TodoItem { Name = "Practice Programs" });
+            _toDoContext.SaveChanges();
         }
 
         [HttpGet]
@@ -64,11 +65,25 @@ namespace Products.Service.Controllers
         }
 
         [HttpGet("ToDoItems")]
+        // http://localhost:6059/api/Products/ToDoItems?api-version=1.0
         public async Task<IActionResult> GetAllToDoItems()
         {
-            var toDo = await Task.FromResult<IEnumerable<TodoItem>>(_toDoContext.ToDoItems.ToList());
-            var products = await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList());
-            return Ok(new { Products = products, ToDoItems = toDo });
+            return Ok(new
+            {
+                ToDoItems = await Task.FromResult<IEnumerable<TodoItem>>(_toDoContext.ToDoItems.ToList()),
+                Products = await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList())
+            });
+        }
+
+        [HttpGet("ToDoItems"), MapToApiVersion("2.0")]
+        // http://localhost:6059/api/Products/ToDoItems?api-version=2.0
+        public async Task<IActionResult> GetAllToDoItemsV2()
+        {
+            return Ok(new
+            {
+                Products = await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList()),
+                ToDoItems = await Task.FromResult<IEnumerable<TodoItem>>(_toDoContext.ToDoItems.ToList())
+            });
         }
 
     }

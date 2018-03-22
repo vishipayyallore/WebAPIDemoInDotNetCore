@@ -9,7 +9,8 @@ namespace Products.Service.Controllers
 {
 
     [Produces("application/json")]
-    [Route("api/[Controller]")]
+    [Route("api/v{version:apiVersion}/[Controller]")]  
+    //http://localhost:6059/api/v1/ToDoItems
     public class ToDoItemsController : Controller
     {
         private readonly ToDoContext _toDoContext;
