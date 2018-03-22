@@ -22,6 +22,7 @@ namespace Products.Service
             services.AddMvc();
 
             services.AddDbContext<ProductsContext>();
+            services.AddDbContext<ToDoContext>();
 
             services.AddSwaggerGen(config =>
             {
