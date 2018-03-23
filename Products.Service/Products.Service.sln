@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Service", "Product
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0B4623F9-37CB-4F4E-8B72-C8C453D279DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Data", "..\Products.Data\Products.Data.csproj", "{56DFC568-C9A5-4AA2-B6FB-B6725FB128B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Data", "..\Products.Data\Products.Data.csproj", "{56DFC568-C9A5-4AA2-B6FB-B6725FB128B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.Domain", "Products.Domain\Products.Domain.csproj", "{D35888A7-E31A-4C51-B60C-CBFD81F73908}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Domain", "Products.Domain\Products.Domain.csproj", "{D35888A7-E31A-4C51-B60C-CBFD81F73908}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8961C4B3-CDA4-4D90-83B3-0D4083CCF46D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1D218C1C-CC0E-44B5-BAA1-C05B0B20620F} = {8961C4B3-CDA4-4D90-83B3-0D4083CCF46D}
+		{56DFC568-C9A5-4AA2-B6FB-B6725FB128B3} = {8961C4B3-CDA4-4D90-83B3-0D4083CCF46D}
+		{D35888A7-E31A-4C51-B60C-CBFD81F73908} = {8961C4B3-CDA4-4D90-83B3-0D4083CCF46D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FF5284C-3B97-4C94-9202-A1D7678D97F1}
