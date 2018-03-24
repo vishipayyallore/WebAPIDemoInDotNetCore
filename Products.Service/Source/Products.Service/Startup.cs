@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Products.Core;
 using Products.Data;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -29,6 +31,8 @@ namespace Products.Service
                 o.AssumeDefaultVersionWhenUnspecified = true;
             });
 
+            services.AddScoped<IProductsContext, ProductsContext>();
+
             services.AddDbContext<ProductsContext>();
             services.AddDbContext<ToDoContext>();
 
@@ -42,6 +46,7 @@ namespace Products.Service
                     TermsOfService = "None"
                 });
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

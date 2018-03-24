@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Products.Core;
 
 namespace Products.Service.Controllers
 {
@@ -15,7 +16,7 @@ namespace Products.Service.Controllers
     // http://localhost:6059/api/Products?api-version=1.0
     public class ProductsController : Controller
     {
-        private readonly ProductsContext _productsContext;
+        private readonly IProductsContext _productsContext;
         private readonly IEnumerable<Product> _products = new[]
         {
             new Product {  Name = "Tomato Soup", Category = "Groceries", Price = 1 },
@@ -30,7 +31,7 @@ namespace Products.Service.Controllers
         };
 
 
-        public ProductsController(ProductsContext productsContext, ToDoContext toDoContext)
+        public ProductsController(IProductsContext productsContext, ToDoContext toDoContext)
         {
             _productsContext = productsContext;
             if (!_productsContext.Products.Any())

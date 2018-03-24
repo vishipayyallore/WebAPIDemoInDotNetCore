@@ -8,6 +8,8 @@ namespace Products.Core
     public interface IProductsContext : IDisposable
     {
         DbSet<Product> Products { get; set; }
+
+        int SaveChanges();
     }
 
 }
