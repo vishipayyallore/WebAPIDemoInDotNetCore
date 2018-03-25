@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Products.Data;
 using Products.Service.Controllers;
