@@ -6,3 +6,10 @@ services:
     build:
       context: .
       dockerfile: Source\Products.Service.API\Dockerfile
+
+  products.api:
+    image: products.api
+    build:
+      context: .
+      dockerfile: Source\Products.API\Dockerfile
+
