@@ -7,11 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8961C4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CBB94960-5759-4AE3-96C8-0393226387F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Service.API", "Source\Products.Service.API\Products.Service.API.csproj", "{90BC02CC-722D-42B2-87BB-636E44DF769B}"
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{06BF86F9-2584-4683-9FFA-E38FDF37C1D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products.API", "Source\Products.API\Products.API.csproj", "{1E5A0002-2A94-456A-AE98-564B1DDBA905}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.API", "Source\Products.API\Products.API.csproj", "{1E5A0002-2A94-456A-AE98-564B1DDBA905}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{90BC02CC-722D-42B2-87BB-636E44DF769B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90BC02CC-722D-42B2-87BB-636E44DF769B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90BC02CC-722D-42B2-87BB-636E44DF769B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90BC02CC-722D-42B2-87BB-636E44DF769B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06BF86F9-2584-4683-9FFA-E38FDF37C1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06BF86F9-2584-4683-9FFA-E38FDF37C1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06BF86F9-2584-4683-9FFA-E38FDF37C1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,7 +30,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{90BC02CC-722D-42B2-87BB-636E44DF769B} = {8961C4B3-CDA4-4D90-83B3-0D4083CCF46D}
 		{1E5A0002-2A94-456A-AE98-564B1DDBA905} = {8961C4B3-CDA4-4D90-83B3-0D4083CCF46D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
