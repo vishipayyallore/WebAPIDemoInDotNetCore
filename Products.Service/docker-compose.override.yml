@@ -1,11 +1,6 @@
 version: '3'
 
 services:
-  products.service.api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80"
   products.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -15,4 +10,3 @@ networks:
   default:
     external:
       name: nat
-
