@@ -5,10 +5,10 @@ EXPOSE 80
 FROM microsoft/aspnetcore-build:2.0-nanoserver-sac2016 AS build
 WORKDIR /src
 COPY *.sln ./
-COPY Source/Products.API/Products.API.csproj Source/Products.API/
+COPY ../Products.API/Products.API.csproj ../Products.API/
 RUN dotnet restore
 COPY . .
-WORKDIR /src/Source/Products.API
+WORKDIR /src/../Products.API
 RUN dotnet build -c Release -o /app
 
 FROM build AS publish

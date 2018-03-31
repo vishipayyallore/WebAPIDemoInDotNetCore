@@ -1,8 +1,0 @@
-version: '3'
-
-services:
-  products.api:
-    image: products.api
-    build:
-      context: .
-      dockerfile: Source\Products.API\Dockerfile
