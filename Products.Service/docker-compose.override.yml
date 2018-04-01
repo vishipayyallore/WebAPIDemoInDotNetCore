@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  products.api:
+  webapplication1:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

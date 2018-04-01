@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.0</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <ProjectGuid>04802666-a262-48e4-8cbf-c3a6a305b666</ProjectGuid>
+    <ProjectGuid>2b251624-817d-46e7-8f5c-3fdf3673333d</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>http://{ServiceIPAddress}/api/values</DockerServiceUrl>
-    <DockerServiceName>products.api</DockerServiceName>
+    <DockerServiceName>webapplication1</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
