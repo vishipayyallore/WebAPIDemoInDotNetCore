@@ -5,4 +5,11 @@ services:
     image: webapplication1
     build:
       context: .
-      dockerfile: ../WebApplication1/Dockerfile
+      dockerfile: WebApplication1/Dockerfile
+
+  webapplication2:
+    image: webapplication2
+    build:
+      context: .
+      dockerfile: WebApplication2/Dockerfile
+
