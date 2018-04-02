@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  products.api:
-    image: products.api
+  webapplication1:
+    image: webapplication1
     build:
       context: .
-      dockerfile: Source\Products.API\Dockerfile
+      dockerfile: ../WebApplication1/Dockerfile
