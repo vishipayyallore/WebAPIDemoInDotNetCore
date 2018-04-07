@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Products.API.Controllers
@@ -10,7 +13,7 @@ namespace Products.API.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new[] { "value1", "value2" };
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
