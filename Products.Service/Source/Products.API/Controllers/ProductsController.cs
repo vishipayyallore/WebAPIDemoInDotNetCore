@@ -14,7 +14,7 @@ namespace Products.API.Controllers
     [Route("api/[Controller]")]
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
-    // http://localhost:6059/api/Products?api-version=1.0
+    // http://localhost:PORT/api/Products?api-version=1.0
     public class ProductsController : Controller
     {
         private readonly IProductsContext _productsContext;
