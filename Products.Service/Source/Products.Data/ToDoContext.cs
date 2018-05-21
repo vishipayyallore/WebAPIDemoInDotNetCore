@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Products.Core;
 using Products.Domain;
 
 namespace Products.Data
 {
-    public class ToDoContext : DbContext
+    public class ToDoContext : DbContext, ITodoContext
     {
 
         public ToDoContext() : base(new DbContextOptions<ProductsContext>())
