@@ -7,7 +7,7 @@ namespace Products.Data
     public class ToDoContext : DbContext, ITodoContext
     {
 
-        public ToDoContext() : base(new DbContextOptions<ProductsContext>())
+        public ToDoContext() : base(new DbContextOptions<ToDoContext>())
         {
         }
 

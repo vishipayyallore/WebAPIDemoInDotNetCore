@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products.Data;
 using Products.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +34,22 @@ namespace Products.API.Controllers
         public async Task<IEnumerable<TodoItem>> GetAllToDoItems()
         {
             return await Task.FromResult<IEnumerable<TodoItem>>(_toDoContext.ToDoItems.ToList());
+        }
+
+        /// <summary>
+        /// http://localhost:4942/api/v1/todoitems/96a28806-81ca-42b7-a4d3-feb1be00adbc
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTodo(Guid id)
+        {
+            var todoItem = await Task.FromResult(_toDoContext.ToDoItems.FirstOrDefault((p) => p.Id == id));
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(todoItem);
         }
 
     }
