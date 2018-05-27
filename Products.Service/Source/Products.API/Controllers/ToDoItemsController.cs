@@ -10,7 +10,9 @@ namespace Products.API.Controllers
 {
 
     [Produces("application/json")]
-    [Route("api/v{version:apiVersion}/[Controller]")]  
+    [Route("api/v{version:apiVersion}/[Controller]")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     //http://localhost:6059/api/v1/ToDoItems
     public class ToDoItemsController : Controller
     {
@@ -43,6 +45,22 @@ namespace Products.API.Controllers
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTodo(Guid id)
+        {
+            var todoItem = await Task.FromResult(_toDoContext.ToDoItems.FirstOrDefault((p) => p.Id == id));
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(todoItem);
+        }
+
+        /// <summary>
+        /// http://localhost:4942/api/v2/todoitems/96a28806-81ca-42b7-a4d3-feb1be00adbc
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}"), MapToApiVersion("2.0")]
+        public async Task<IActionResult> GetTodoById(Guid id)
         {
             var todoItem = await Task.FromResult(_toDoContext.ToDoItems.FirstOrDefault((p) => p.Id == id));
             if (todoItem == null)
