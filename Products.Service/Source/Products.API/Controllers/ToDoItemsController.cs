@@ -46,12 +46,7 @@ namespace Products.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTodo(Guid id)
         {
-            var todoItem = await Task.FromResult(_toDoContext.ToDoItems.FirstOrDefault((p) => p.Id == id));
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-            return Ok(todoItem);
+            return await GetToDoItem(id);
         }
 
         /// <summary>
@@ -61,6 +56,12 @@ namespace Products.API.Controllers
         /// <returns></returns>
         [HttpGet("{id}"), MapToApiVersion("2.0")]
         public async Task<IActionResult> GetTodoById(Guid id)
+        {
+            return await GetToDoItem(id);
+        }
+
+
+        private async Task<IActionResult> GetToDoItem(Guid id)
         {
             var todoItem = await Task.FromResult(_toDoContext.ToDoItems.FirstOrDefault((p) => p.Id == id));
             if (todoItem == null)
