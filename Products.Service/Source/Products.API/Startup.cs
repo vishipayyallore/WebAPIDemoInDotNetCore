@@ -21,6 +21,8 @@ namespace Products.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // services.AddMvcCore().AddVersionedApiExplorer(o => o.GroupNameFormat = "'v'VVV");
+
             services.AddMvc();
             // reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
             services.AddApiVersioning(o =>
