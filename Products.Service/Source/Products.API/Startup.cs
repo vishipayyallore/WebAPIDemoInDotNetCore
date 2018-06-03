@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Products.Core;
 using Products.Data;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace Products.API
 {
@@ -21,7 +22,16 @@ namespace Products.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddMvcCore().AddVersionedApiExplorer(o => o.GroupNameFormat = "'v'VVV");
+            services.AddMvcCore().AddApiExplorer();
+                //.AddVersionedApiExplorer(
+                //options =>
+                //{
+                //    options.GroupNameFormat = "'v'VVV";
+
+                //    // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
+                //    // can also be used to control the format of the API version in route templates
+                //    options.SubstituteApiVersionInUrl = true;
+                //});
 
             services.AddMvc();
             // reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
