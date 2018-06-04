@@ -7,6 +7,7 @@ using Products.Core;
 using Products.Data;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Internal;
 
 namespace Products.API
 {
@@ -23,15 +24,18 @@ namespace Products.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcCore().AddApiExplorer();
-                //.AddVersionedApiExplorer(
-                //options =>
-                //{
-                //    options.GroupNameFormat = "'v'VVV";
 
-                //    // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
-                //    // can also be used to control the format of the API version in route templates
-                //    options.SubstituteApiVersionInUrl = true;
-                //});
+            //services.AddVersionedApiExplorer(
+            //    options =>
+            //    {
+            //        options.GroupNameFormat = "'v'VVV";
+
+            //        // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
+            //        // can also be used to control the format of the API version in route templates
+            //        options.SubstituteApiVersionInUrl = true;
+            //    });
+
+            //services.AddMvcCore().AddVersionedApiExplorer 
 
             services.AddMvc();
             // reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
