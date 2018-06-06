@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Products.Core;
 using Products.Data;
-using Swashbuckle.AspNetCore.Swagger;
+//using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Internal;
 
@@ -23,7 +23,7 @@ namespace Products.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore().AddApiExplorer();
+            //services.AddMvcCore().AddApiExplorer();
 
             //services.AddVersionedApiExplorer(
             //    options =>
@@ -51,16 +51,16 @@ namespace Products.API
             services.AddDbContext<ProductsContext>();
             services.AddDbContext<ToDoContext>();
 
-            services.AddSwaggerGen(config =>
-            {
-                config.SwaggerDoc("v1", new Info
-                {
-                    Title = "Products Service",
-                    Version = "v1",
-                    Description = "Web API for Products",
-                    TermsOfService = "None"
-                });
-            });
+            //services.AddSwaggerGen(config =>
+            //{
+            //    config.SwaggerDoc("v1", new Info
+            //    {
+            //        Title = "Products Service",
+            //        Version = "v1",
+            //        Description = "Web API for Products",
+            //        TermsOfService = "None"
+            //    });
+            //});
 
         }
 
@@ -72,14 +72,14 @@ namespace Products.API
                 app.UseDeveloperExceptionPage();
             }
 
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
+            //// Enable middleware to serve generated Swagger as a JSON endpoint.
+            //app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(config =>
-            {
-                config.SwaggerEndpoint("/swagger/v1/swagger.json", "Products Service API");
-            });
+            //// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            //app.UseSwaggerUI(config =>
+            //{
+            //    config.SwaggerEndpoint("/swagger/v1/swagger.json", "Products Service API");
+            //});
 
             app.UseMvc();
         }
