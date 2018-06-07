@@ -25,16 +25,6 @@ namespace Products.API
         {
             //services.AddMvcCore().AddApiExplorer();
 
-            //services.AddVersionedApiExplorer(
-            //    options =>
-            //    {
-            //        options.GroupNameFormat = "'v'VVV";
-
-            //        // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
-            //        // can also be used to control the format of the API version in route templates
-            //        options.SubstituteApiVersionInUrl = true;
-            //    });
-
             //services.AddMvcCore().AddVersionedApiExplorer 
 
             services.AddMvc();
