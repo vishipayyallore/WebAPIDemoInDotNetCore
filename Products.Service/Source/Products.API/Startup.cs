@@ -27,7 +27,9 @@ namespace Products.API
 
             //services.AddMvcCore().AddVersionedApiExplorer 
 
-            services.AddMvc();
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             // reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
             services.AddApiVersioning(o =>
             {
