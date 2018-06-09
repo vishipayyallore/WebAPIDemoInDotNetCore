@@ -66,6 +66,15 @@ namespace Products.API.Controllers
             return Ok(product);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(Product product)
+        {
+            await Task.FromResult(_productsContext.Products.Add(product));
+            _productsContext.SaveChanges();
+
+            return CreatedAtRoute("products", new { id = product.Id }, product);
+        }
+
         [HttpGet("ToDoItems")]
         // http://localhost:6059/api/Products/ToDoItems?api-version=1.0
         public async Task<IActionResult> GetAllToDoItems()
