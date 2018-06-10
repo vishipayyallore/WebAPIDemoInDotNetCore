@@ -66,6 +66,11 @@ namespace Products.API.Controllers
             return Ok(product);
         }
 
+        /// <summary>
+        /// To Add new product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Create(Product product)
         {
