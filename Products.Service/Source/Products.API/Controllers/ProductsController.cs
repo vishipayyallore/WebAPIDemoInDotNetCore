@@ -55,7 +55,8 @@ namespace Products.API.Controllers
             return await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList());
         }
 
-        [HttpGet("{id}")]
+
+        [HttpGet("{id}", Name = "GetProductById")]
         public async Task<IActionResult> GetProduct(Guid id)
         {
             var product = await Task.FromResult(_productsContext.Products.FirstOrDefault((p) => p.Id == id));
@@ -67,7 +68,8 @@ namespace Products.API.Controllers
         }
 
         /// <summary>
-        /// To Add new product
+        /// To Add new product. 
+        /// Returns location →http://localhost:4942/api/Products/200e5eaa-77d3-4186-aaf1-1be513cc3671 in output
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
@@ -77,8 +79,11 @@ namespace Products.API.Controllers
             await Task.FromResult(_productsContext.Products.Add(product));
             _productsContext.SaveChanges();
 
-            var currentRoute = $"api/products/{product.Id}";
-            return CreatedAtRoute(currentRoute, new { id = product.Id }, product);
+            var currentRoute = $"GetProductById";
+            return CreatedAtRoute(
+                routeName: currentRoute, 
+                routeValues: new { id = product.Id }, 
+                value: product);
         }
 
         [HttpGet("ToDoItems")]
