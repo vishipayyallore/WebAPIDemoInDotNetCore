@@ -77,7 +77,8 @@ namespace Products.API.Controllers
             await Task.FromResult(_productsContext.Products.Add(product));
             _productsContext.SaveChanges();
 
-            return CreatedAtRoute("products", new { id = product.Id }, product);
+            var currentRoute = $"api/products/{product.Id}";
+            return CreatedAtRoute(currentRoute, new { id = product.Id }, product);
         }
 
         [HttpGet("ToDoItems")]
