@@ -86,6 +86,19 @@ namespace Products.API.Controllers
                 value: product);
         }
 
+
+        [HttpPut]
+        public async Task<IActionResult> Update(Product product)
+        {
+            var currentProduct = _productsContext.Products.SingleOrDefault(pduct => pduct.Id == product.Id);
+            if(currentProduct == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+
         [HttpGet("ToDoItems")]
         // http://localhost:6059/api/Products/ToDoItems?api-version=1.0
         public async Task<IActionResult> GetAllToDoItems()
