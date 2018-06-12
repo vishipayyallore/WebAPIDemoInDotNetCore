@@ -81,8 +81,8 @@ namespace Products.API.Controllers
 
             var currentRoute = $"GetProductById";
             return CreatedAtRoute(
-                routeName: currentRoute, 
-                routeValues: new { id = product.Id }, 
+                routeName: currentRoute,
+                routeValues: new { id = product.Id },
                 value: product);
         }
 
