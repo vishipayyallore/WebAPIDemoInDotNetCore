@@ -74,7 +74,7 @@ namespace Products.API.Controllers
         /// <param name="product"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Create(Product product)
+        public async Task<IActionResult> Create([FromBody]Product product)
         {
             await Task.FromResult(_productsContext.Products.Add(product));
             _productsContext.SaveChanges();
@@ -88,9 +88,9 @@ namespace Products.API.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> Update(Product product)
+        public async Task<IActionResult> Update([FromBody]Product product)
         {
-            var currentProduct = _productsContext.Products.SingleOrDefault(pduct => pduct.Id == product.Id);
+            var currentProduct = await Task.FromResult(_productsContext.Products.FirstOrDefault(pduct => pduct.Id == product.Id));
             if(currentProduct == null)
             {
                 return NotFound();
