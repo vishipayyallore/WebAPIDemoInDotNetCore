@@ -95,6 +95,13 @@ namespace Products.API.Controllers
             {
                 return NotFound();
             }
+
+            // Update only Price is allowed
+            currentProduct.Price = product.Price;
+
+            _productsContext.Products.Update(currentProduct);
+            _productsContext.SaveChanges();
+
             return NoContent();
         }
 
