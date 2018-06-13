@@ -49,13 +49,21 @@ namespace Products.API.Controllers
             _toDoContext.SaveChanges();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
             return await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList());
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetProductById")]
         public async Task<IActionResult> GetProduct(Guid id)
         {
@@ -86,7 +94,11 @@ namespace Products.API.Controllers
                 value: product);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<IActionResult> Update([FromBody]Product product)
         {
@@ -105,7 +117,10 @@ namespace Products.API.Controllers
             return NoContent();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("ToDoItems")]
         // http://localhost:6059/api/Products/ToDoItems?api-version=1.0
         public async Task<IActionResult> GetAllToDoItems()
@@ -117,6 +132,10 @@ namespace Products.API.Controllers
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("ToDoItems"), MapToApiVersion("2.0")]
         // http://localhost:6059/api/Products/ToDoItems?api-version=2.0
         public async Task<IActionResult> GetAllToDoItemsV2()
