@@ -117,6 +117,21 @@ namespace Products.API.Controllers
             return NoContent();
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody]Product product)
+        {
+            var currentProduct = await Task.FromResult(_productsContext.Products.FirstOrDefault(pduct => pduct.Id == product.Id));
+            if (currentProduct == null)
+            {
+                return NotFound();
+            }
+
+            _productsContext.Products.Remove(currentProduct);
+            _productsContext.SaveChanges();
+
+            return NoContent();
+        }
+
         /// <summary>
         /// 
         /// </summary>
