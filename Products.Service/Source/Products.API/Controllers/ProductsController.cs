@@ -103,7 +103,7 @@ namespace Products.API.Controllers
         public async Task<IActionResult> Update([FromBody]Product product)
         {
             var currentProduct = await Task.FromResult(_productsContext.Products.FirstOrDefault(pduct => pduct.Id == product.Id));
-            if(currentProduct == null)
+            if (currentProduct == null)
             {
                 return NotFound();
             }
