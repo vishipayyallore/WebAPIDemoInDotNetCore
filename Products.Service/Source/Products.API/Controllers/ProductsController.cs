@@ -21,6 +21,10 @@ namespace Products.API.Controllers
             _productsContext = productsContext;
         }
 
+        /// <summary>
+        /// http://localhost:XXX/api/products
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "GetProducts")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
