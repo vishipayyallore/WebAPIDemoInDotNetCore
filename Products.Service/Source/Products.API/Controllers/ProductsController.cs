@@ -2,6 +2,7 @@
 using Products.Core;
 using Products.Domain;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Products.API.Controllers
@@ -23,7 +24,7 @@ namespace Products.API.Controllers
         [HttpGet(Name = "GetProducts")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return null;
+            return await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList());
         }
 
     }
