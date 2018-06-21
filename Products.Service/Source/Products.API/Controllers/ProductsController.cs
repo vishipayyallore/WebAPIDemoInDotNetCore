@@ -28,7 +28,7 @@ namespace Products.API.Controllers
         [HttpGet(Name = "GetProducts")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await Task.FromResult<IEnumerable<Product>>(_productsContext.Products.ToList());
+            return await Task.FromResult<IEnumerable<Product>>(_productsContext.ProductsSet.ToList());
         }
 
     }

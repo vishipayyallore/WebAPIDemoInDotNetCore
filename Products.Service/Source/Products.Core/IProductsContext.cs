@@ -7,7 +7,7 @@ namespace Products.Core
 
     public interface IProductsContext : IDisposable
     {
-        DbSet<Product> Products { get; set; }
+        DbSet<Product> ProductsSet { get; set; }
 
         int SaveChanges();
     }
