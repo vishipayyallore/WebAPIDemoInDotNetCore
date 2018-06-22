@@ -23,9 +23,11 @@ namespace Products.API.Controllers
 
         /// <summary>
         /// http://localhost:XXX/api/products
+        /// http://localhost:8033/api/products/GetProducts
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "GetProducts")]
+        [Route("GetProducts")]
         public async Task<IEnumerable<Product>> GetProducts()
         {
             return await Task.FromResult<IEnumerable<Product>>(_productsContext.ProductsSet.ToList());
