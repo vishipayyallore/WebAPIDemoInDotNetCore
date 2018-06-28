@@ -35,6 +35,7 @@ namespace Products.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetProductById")]
+        [Route("GetProductById")]
         public async Task<IActionResult> GetProduct(Guid id)
         {
             var product = await Task.FromResult(_productsContext.ProductsSet.FirstOrDefault((p) => p.Id == id));
