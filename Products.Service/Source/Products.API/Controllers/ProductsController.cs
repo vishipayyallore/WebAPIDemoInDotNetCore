@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products.Core;
 using Products.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,6 +32,17 @@ namespace Products.API.Controllers
         public async Task<IEnumerable<Product>> GetProducts()
         {
             return await Task.FromResult<IEnumerable<Product>>(_productsContext.ProductsSet.ToList());
+        }
+
+        [HttpGet("{id}", Name = "GetProductById")]
+        public async Task<IActionResult> GetProduct(Guid id)
+        {
+            var product = await Task.FromResult(_productsContext.ProductsSet.FirstOrDefault((p) => p.Id == id));
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
         }
 
     }
