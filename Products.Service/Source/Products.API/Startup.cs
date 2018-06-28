@@ -23,11 +23,9 @@ namespace Products.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<ProductsContext>();
-
             services.AddMvc();
 
-            // services.AddScoped<IProductsContext, ProductsContext>();
+            services.AddScoped<IProductsContext, ProductsContext>();
 
         }
 
@@ -39,15 +37,15 @@ namespace Products.API
                 app.UseDeveloperExceptionPage();
             }
 
-            var context = app.ApplicationServices.GetService<ProductsContext>();
-            AddTestDataForInMemory(context);
-
             app.UseMvc();
+
+            AddTestDataForInMemory();
 
         }
 
-        private void AddTestDataForInMemory(ProductsContext productsContext)
+        private void AddTestDataForInMemory()
         {
+            var productsContext = new ProductsContext();
             productsContext.AddRangeAsync(
              new[]
             {
@@ -56,7 +54,7 @@ namespace Products.API
                 new Product {  Name = "Hammer", Category = "Hardware", Price = 16.99M }
             });
 
-            productsContext.SaveChangesAsync();
+            productsContext.SaveChangesAsync(); 
         }
 
 
