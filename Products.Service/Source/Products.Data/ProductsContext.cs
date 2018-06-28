@@ -21,12 +21,13 @@ namespace Products.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().HasData(
-                new Product { Name = "Tomato Soup", Category = "Groceries", Price = 1 },
-                new Product { Name = "Yo-yo", Category = "Toys", Price = 3.75M },
-                new Product { Name = "Hammer", Category = "Hardware", Price = 16.99M }
-                );
+            //modelBuilder.Entity<Product>().HasData(
+            //    new Product { Name = "Tomato Soup", Category = "Groceries", Price = 1 },
+            //    new Product { Name = "Yo-yo", Category = "Toys", Price = 3.75M },
+            //    new Product { Name = "Hammer", Category = "Hardware", Price = 16.99M }
+            //    );
         }
+
     }
 
 }
