@@ -46,6 +46,27 @@ namespace Products.API.Controllers
             return Ok(product);
         }
 
+        /// <summary>
+        /// To Add new product. 
+        /// Route: http://localhost:8033/api/products/CreateProduct
+        /// Returns location →http://localhost:4942/api/Products/200e5eaa-77d3-4186-aaf1-1be513cc3671 in output
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("CreateProduct")]
+        public async Task<IActionResult> Create([FromBody]Product product)
+        {
+            await Task.FromResult(_productsContext.ProductsSet.Add(product));
+            _productsContext.SaveChanges();
+
+            var currentRoute = $"GetProductById";
+            return CreatedAtRoute(
+                routeName: currentRoute,
+                routeValues: new { id = product.Id },
+                value: product);
+        }
+
     }
 
 }
