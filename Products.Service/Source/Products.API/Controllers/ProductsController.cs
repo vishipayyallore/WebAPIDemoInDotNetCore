@@ -67,6 +67,51 @@ namespace Products.API.Controllers
                 value: product);
         }
 
+        /// <summary>
+        /// Route: http://localhost:8033/api/products/UpdateProduct
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("UpdateProduct")]
+        public async Task<IActionResult> Update([FromBody]Product product)
+        {
+            var currentProduct = await Task.FromResult(_productsContext.ProductsSet.FirstOrDefault(pduct => pduct.Id == product.Id));
+            if (currentProduct == null)
+            {
+                return NotFound();
+            }
+
+            // Update only Price is allowed
+            currentProduct.Price = product.Price;
+
+            _productsContext.ProductsSet.Update(currentProduct);
+            _productsContext.SaveChanges();
+
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Route: http://localhost:8033/api/products/DeleteProduct
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route("DeleteProduct")]
+        public async Task<IActionResult> Delete([FromBody]Product product)
+        {
+            var currentProduct = await Task.FromResult(_productsContext.ProductsSet.FirstOrDefault(pduct => pduct.Id == product.Id));
+            if (currentProduct == null)
+            {
+                return NotFound();
+            }
+
+            _productsContext.ProductsSet.Remove(currentProduct);
+            _productsContext.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 
 }
