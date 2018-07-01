@@ -34,9 +34,14 @@ namespace Products.API.Controllers
             return await Task.FromResult<IEnumerable<Product>>(_productsContext.ProductsSet.ToList());
         }
 
+        /// <summary>
+        /// Route: http://localhost:8033/api/products/63a371ea-faca-4ed0-b747-090c7aeddae0
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetProductById")]
         [Route("GetProductById")]
-        public async Task<IActionResult> GetProduct(Guid id)
+        public async Task<IActionResult> GetProductById([FromRoute]Guid id)
         {
             var product = await Task.FromResult(_productsContext.ProductsSet.FirstOrDefault((p) => p.Id == id));
             if (product == null)
